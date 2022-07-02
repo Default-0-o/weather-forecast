@@ -1,0 +1,17 @@
+.dots-menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 8px 0 0 8px;
+	padding: 7px;
+	background-color: transparent;
+	outline: 0;
+	border: 0;
+}
+
+.dot {
+	width: 6px;
+	height: 6px;
+	background-color: #000;
+	border-radius: 50%;
+}

@@ -1,0 +1,131 @@
+.home {
+	height: 100%;
+	.animated-view {
+		height: 65%;
+		position: relative;
+		background: linear-gradient(
+			to top,
+			rgba(167, 0, 60, 0.7371323529411764) 0%,
+			rgba(133, 0, 159, 0.9136029411764706) 100%
+		);
+		img.cloud-1 {
+			position: absolute;
+			top: 40px;
+			left: 10%;
+			width: 55%;
+			z-index: 3;
+			opacity: 0.7;
+		}
+		img.cloud-2 {
+			position: absolute;
+			top: 25px;
+			left: 45%;
+			width: 42%;
+			z-index: 2;
+			opacity: 0.9;
+		}
+		.city-svg {
+			position: absolute;
+			bottom: 0;
+			// height: 150px;
+		}
+		.turbine {
+			.turbine-circle {
+				position: absolute;
+				bottom: 200px;
+				right: 140px;
+				width: 22px;
+				height: 22px;
+				border-radius: 50%;
+				background: #000;
+				z-index: 1;
+			}
+
+			.turbin-blades {
+				width: 200px;
+				height: 200px;
+				position: absolute;
+				bottom: 108px;
+				right: 50px;
+				animation: turbine 5s infinite linear;
+				transform-origin: center;
+				.turbine-blade {
+					position: absolute;
+					bottom: 50%;
+					right: 0;
+					width: 100px;
+					height: 5px;
+					border-radius: 0 80px 50px 0;
+					background: #000;
+					z-index: 1;
+					transform-origin: left;
+
+					&::before {
+						content: "";
+						position: absolute;
+						width: 40px;
+						height: 5px;
+						background: #000;
+						z-index: 1;
+					}
+
+					&::after {
+						content: "";
+						position: absolute;
+						width: 20px;
+						top: 5px;
+						left: 12px;
+						border-top: 10px solid #000;
+						border-left: 20px solid transparent;
+						border-right: 48px solid transparent;
+					}
+
+					&.blade-1 {
+						transform: rotate(0deg);
+					}
+					&.blade-2 {
+						transform: rotate(120deg);
+					}
+					&.blade-3 {
+						transform: rotate(240deg);
+					}
+				}
+			}
+
+			.turbine-body {
+				position: absolute;
+				bottom: 0px;
+				right: 147px;
+				width: 8px;
+				height: 210px;
+				background: #000;
+				z-index: 1;
+				&::after {
+					content: "";
+					position: absolute;
+					bottom: 0;
+					left: -9px;
+					width: 26px;
+					height: 26px;
+					border-radius: 3px 3px 0 0;
+					background: #000;
+					z-index: 1;
+				}
+			}
+		}
+	}
+	.status {
+		height: 35%;
+		position: relative;
+		background-color: #000;
+	}
+}
+
+@keyframes turbine {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
