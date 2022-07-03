@@ -9,22 +9,24 @@ import "./home.scss";
 import SideBar from "../../components/sideBar";
 
 const Home = () => {
-	const [cityInfo, setCityInfo] = useState([]);
-	const [weatherInfo, setWeatherInfo] = useState([]);
-	const [searchTerm, setSearchTerm] = useState("Tabriz");
+	const [cityInfo, setCityInfo] = useState({});
+	const [weatherInfo, setWeatherInfo] = useState({});
+	const [searchTerm, setSearchTerm] = useState("New York");
 	const [sideBarStatus, setSideBarStatus] = useState(false);
+	const [unit, setUnit] = useState("imperial");
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			axios
-				.get(Endpoints.searchLocation, {
+				.get(Endpoints.getCurrentWeather, {
 					params: {
 						q: searchTerm,
 					},
 				})
 				.then((res) => {
 					if (res.data.length === 0) return;
-					setCityInfo(res.data[0]);
+					setCityInfo(res.data.location);
+					setWeatherInfo(res.data.current);
 				})
 				.catch((err) => {
 					if (!err) return;
@@ -38,25 +40,6 @@ const Home = () => {
 		return () => clearTimeout(timer);
 	}, [searchTerm]);
 
-	useEffect(() => {
-		cityInfo.Key &&
-			axios
-				.get(Endpoints.getWeatherHourly + "/" + cityInfo.Key, {
-					params: {
-						metric: true,
-					},
-				})
-				.then((res) => {
-					if (res.data.length === 0) return;
-					else setWeatherInfo(res.data[0]);
-				})
-				.catch((err) => {
-					if (!err) return;
-					error("No data was returned!");
-					console.log(err);
-				});
-	}, [cityInfo]);
-
 	return (
 		<div className="home">
 			<SideBar
@@ -64,10 +47,12 @@ const Home = () => {
 				onClose={() => setSideBarStatus(false)}
 				onInput={(e) => setSearchTerm(e.target.value)}
 				searchTerm={searchTerm}
+				onUnit={(e) => setUnit(e.target.value)}
+				unit={unit}
 			/>
 			<AnimatedView />
 			<DotsMenu onClick={() => setSideBarStatus(true)} />
-			<Status cityInfo={cityInfo} weatherInfo={weatherInfo} />
+			<Status cityInfo={cityInfo} weatherInfo={weatherInfo} unit={unit} />
 		</div>
 	);
 };

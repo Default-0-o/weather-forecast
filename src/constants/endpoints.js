@@ -1,9 +1,6 @@
 // API Endpoints
 const endpoint = {
-	searchLocation:
-		"http://dataservice.accuweather.com/locations/v1/cities/search",
-	getWeatherHourly:
-		"http://dataservice.accuweather.com/forecasts/v1/hourly/1hour",
+	getCurrentWeather: "https://api.weatherapi.com/v1/current.json",
 };
 
 export default endpoint;

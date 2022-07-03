@@ -5,7 +5,7 @@ const newAxios = axios.create();
 
 newAxios.interceptors.request.use(
 	(config) => {
-		config.params.apikey = "5VY2Uw4CzkDVV5XDzAMUpcxGVhhzdRuP";
+		config.params.key = "6849689f80164c1eab052736220307";
 		return config;
 	},
 	(err) => {

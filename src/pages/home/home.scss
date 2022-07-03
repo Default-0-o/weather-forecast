@@ -1,13 +1,15 @@
 .home {
 	height: 100%;
+	position: relative;
 	.animated-view {
 		height: 65%;
 		position: relative;
-		background: linear-gradient(
-			to top,
-			rgba(167, 0, 60, 0.7371323529411764) 0%,
-			rgba(133, 0, 159, 0.9136029411764706) 100%
-		);
+		background: linear-gradient(267deg, #f32462,#f32496, #eb1ef2, #9a14f3,#5714f3, #146bec, #1ea5f2, #1ef2c5, #33ec6a ,#5eec33,#96f21e);
+		background-size: 1000% 1000%;
+		-webkit-animation: animatedBg 20s ease infinite;
+		-moz-animation: animatedBg 20s ease infinite;
+		-o-animation: animatedBg 20s ease infinite;
+		animation: animatedBg 20s ease infinite;
 		img.cloud-1 {
 			position: absolute;
 			top: 40px;
@@ -127,5 +129,57 @@
 	}
 	100% {
 		transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes animatedBg {
+	0% {
+		background-position: 0% 50%
+	}
+
+	50% {
+		background-position: 100% 50%
+	}
+
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes animatedBg {
+	0% {
+		background-position: 0% 50%
+	}
+
+	50% {
+		background-position: 100% 50%
+	}
+
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-o-keyframes animatedBg {
+	0% {
+		background-position: 0% 50%
+	}
+
+	50% {
+		background-position: 100% 50%
+	}
+
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes animatedBg {
+	0% {
+		background-position: 0% 50%
+	}
+
+	50% {
+		background-position: 100% 50%
 	}
 }
